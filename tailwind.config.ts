@@ -25,6 +25,9 @@ export default {
         sans: "var(--font-sans)",
         serif: "var(--font-serif)",
       },
+      spacing: {
+        "20": "5rem",
+      },
     },
   },
   plugins: [],
