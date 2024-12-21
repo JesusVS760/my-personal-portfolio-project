@@ -122,9 +122,9 @@ export const ProjectSection = () => {
                     </button>
                   </a>
                 </div>
-                <div>
+                <div className="relative">
                   <Image
-                    className="lg:mt-0 -mt-4 -mb-12 md:-mb-28 md:-mt-12"
+                    className="lg:mt-0 lg:-top-36 lg:-left-4 lg:absolute lg:h-max lg:w-auto lg:max-w-none -mt-4 -mb-12 md:-mb-28 md:-mt-12"
                     src={project.image}
                     alt={project.title}
                   />
