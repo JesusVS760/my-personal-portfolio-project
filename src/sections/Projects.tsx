@@ -67,22 +67,26 @@ const PortfolioProjects = [
 export const ProjectSection = () => {
   return (
     <section className="pb-16 lg:py-24">
-      <div className="container">
+      <div className="container ">
         <SectionHeader
           eyebrow="Real-World Results"
           title="Featured Projects"
           description="See how I transformed concepts into engaging digital experiences.
 "
         />
-        <div className=" md:mt-20 flex flex-col mt-10 gap-20">
-          {PortfolioProjects.map((project) => (
+        <div className=" md:mt-20 flex flex-col mt-10 gap-20 ">
+          {PortfolioProjects.map((project, projectIndex) => (
             <Card
-              key={project.title}
-              className="px-8 pt-8 lg:pt-16 pb-0 lg-px-20 md:pt-12 md:px-10"
+              key={projectIndex}
+              className="px-8 pt-8 lg:pt-16 pb-0 lg:px-20 md:pt-12 md:px-10 sticky top-16 "
+              style={{
+                top: `calc(64px + ${projectIndex * 40}px)`,
+              }}
             >
               <div className="absolute inset-0"></div>
 
-              <div className="lg:grid lg:grid-cols-2 lg-gap-16">
+              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
+                {" "}
                 <div className="lg:pb-16">
                   <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 font-bold uppercase tracking-widest text-sm text-transparent bg-clip-text">
                     <span>{project.company}</span>

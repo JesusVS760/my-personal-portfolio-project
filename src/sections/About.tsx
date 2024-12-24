@@ -1,20 +1,21 @@
+"use client";
 import { Card } from "@/components/Card";
 import { SectionHeader } from "@/components/SectionHeader";
 import Image from "next/image";
 import StarIcon from "@/assets/sparkle.svg";
 import book from "@/assets/book2.png";
-import JavascriptIcon from "@/assets/javascript.svg";
-import HtmlIcon from "@/assets/html5.svg";
+import JavascriptIcon from "@/assets/javascript3.svg";
+import HtmlIcon from "@/assets/html2.svg";
 import CssIcon from "@/assets/css3.svg";
 import ReactIcon from "@/assets/react.svg";
 import NextjsIcon from "@/assets/nextjs.svg";
-import GithubIcon from "@/assets/github.svg";
+import GithubIcon from "@/assets/github2.svg";
 import mapImage from "@/assets/map.jpg";
 import myMemoji from "@/assets/Memoji.png";
-import { TechIcon } from "@/components/TechIcon";
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
-
+import { motion } from "framer-motion";
+import { useRef } from "react";
 const toolboxItems = [
   {
     title: "Javascript",
@@ -89,6 +90,7 @@ const hobbies = [
 ];
 
 export const AboutSection = () => {
+  const constraintRef = useRef(null);
   return (
     <div className="py-20 lg:py-28">
       <div className="container">
@@ -118,11 +120,15 @@ export const AboutSection = () => {
                 digital experiences."
                   className=""
                 />
-                <ToolboxItems items={toolboxItems} className="mt-6" />
+                <ToolboxItems
+                  items={toolboxItems}
+                  className=""
+                  itemsWrapperClassName="animate-move-left [animation-duration:30s]"
+                />
                 <ToolboxItems
                   items={toolboxItems}
                   className="mt-6 "
-                  itemsWrapperClassName="-translate-x-1/2"
+                  itemsWrapperClassName="animate-move-right [animation-duration:30s]"
                 />
               </Card>
             </div>
@@ -135,21 +141,23 @@ export const AboutSection = () => {
                   description="Explore my interests and hobbies beyond the digital realm"
                   className="px-6 py-6"
                 />
-                <div className="relative flex-1">
+                <div className="relative flex-1" ref={constraintRef}>
                   {hobbies.map((hobby) => (
-                    <div
+                    <motion.div
                       key={hobby.title}
                       className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute"
                       style={{
                         left: hobby.left,
                         top: hobby.top,
                       }}
+                      drag
+                      dragConstraints={constraintRef}
                     >
                       <span className="font-medium text-gray-950 ">
                         {hobby.title}{" "}
                       </span>
                       <span>{hobby.emoji}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </Card>
@@ -161,7 +169,8 @@ export const AboutSection = () => {
                   src={mapImage}
                   alt="san diego map"
                 />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-gradient-to-r from-emerald-300 to-sky-400 size-20 rounded-full after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
                   <Image
                     src={myMemoji}
                     alt="my memoji character"
